@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="principal.css" />
+		<title>FaltaUno.com</title>
+	</head>
+	<body>
+		<header>
+			FaltaUno.com
+			<nav id="navContainer">
+				<ul id="barraNavegacion">
+					<li class="elementoNavegacion">
+						<a href="">Buscar partido</a>
+					</li>
+					<li class="elementoNavegacion">
+						<a href="">Crear propuesta</a>
+					</li>
+					<li class="elementoNavegacion"><a href="">Mi Perfil</a></li>
+					<li class="elementoNavegacion" id="iniciarSesion">
+						<a href="">Iniciar sesion</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div id="cuerpo">
+			<article id="Propuesta">
+				<h1 id="DescipcionPropuesta" class="elementoPropuesta">
+					Nombre del equipo - Posicion
+				</h1>
+				<h3 id="horarioPropusta" class="elementoPropuesta">
+					Horario Lugar
+				</h3>
+				<p id="descripcionPropuesta" class="elementoPropuesta">
+					Descripcion
+				</p>
+			</article>
+		</div>
+		<aside id="Filtros">
+			<form>
+				<div>
+					<label for="filtro"> Filtros</label>
+					<input
+						type="text"
+						id="filtro"
+						name="filter"
+						placeholder="ej: &quot Defensor &quot o &quot La verde &quot"
+					/>
+				</div>
+				<div>
+					<label>Tipo de consulta</label>
+					<input
+						type="radio"
+						name="tipo"
+						id="posicionInput"
+						value="posicion"
+					/><label for="posicionInput">Posicion </label>
+					<input
+						type="radio"
+						name="tipo"
+						id="lugarInput"
+						value="lugar"
+					/><label for="lugarInput">Lugar </label>
+				</div>
+				<div>
+					<button>Buscar</button>
+				</div>
+			</form>
+		</aside>
+	</body>
+</html>

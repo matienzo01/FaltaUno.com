@@ -1,0 +1,41 @@
+#barraNavegacion {
+	list-style-type: none;
+}
+
+.elementoNavegacion {
+	display: inline;
+}
+
+#iniciarSesion {
+	position: relative;
+	margin-left: auto;
+	margin-right: 0;
+}
+
+#cuerpo {
+	display: inline-block;
+}
+
+#Propuesta {
+	background-color: #c4c4c4;
+	display: inline-block;
+	width: 1084px;
+	height: inherit;
+}
+
+.elementoPropuesta {
+	display: inline-block;
+	width: 900px;
+}
+
+#imagen1 {
+	display: inline-block;
+	max-width: 100px;
+	vertical-align: middle;
+}
+
+#Filtros {
+	position: relative;
+	float: right;
+	left: 0;
+}
