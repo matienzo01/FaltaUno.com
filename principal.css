@@ -16,11 +16,10 @@
 	display: inline-block;
 }
 
-#Propuesta {
+.Propuesta {
 	background-color: #c4c4c4;
-	display: inline-block;
+	display: block;
 	width: 1084px;
-	height: inherit;
 }
 
 .elementoPropuesta {
@@ -28,10 +27,13 @@
 	width: 900px;
 }
 
-#imagen1 {
+.contendorDescripcion {
 	display: inline-block;
-	max-width: 100px;
-	vertical-align: middle;
+	width: 900px;
+}
+
+.imagen {
+	max-width: 150px;
 }
 
 #Filtros {
