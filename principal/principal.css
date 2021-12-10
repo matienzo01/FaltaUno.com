@@ -69,6 +69,7 @@ body {
 .elementoPropuesta {
 	display: inline-block;
 	width: 900px;
+	font-family: Raleway;
 }
 
 .contendorDescripcion {
@@ -85,4 +86,12 @@ body {
 	padding: 20px;
 	position: sticky;
 	float: right;
+	width: 210px;
+	background-color: red;
+	margin-right: 50px;
+}
+
+#filtro {
+	width: 200px;
+	border-radius: 5px;
 }

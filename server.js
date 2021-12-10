@@ -17,7 +17,8 @@ const server = http.createServer(function (req, res) {
 	req.on("end", () => {
 		let parsedUrl = new url.URL(req.url, "http://localhost:8080");
 		let search = parsedUrl.searchParams;
-		if (parsedUrl.pathname === "/") {
+		console.log(parsedUrl);
+		if (parsedUrl.search === "") {
 			inicializa().then((respuesta) => {
 				res.write(respuesta);
 				res.end();
