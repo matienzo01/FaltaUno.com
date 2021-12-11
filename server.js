@@ -23,6 +23,10 @@ const server = http.createServer(function (req, res) {
 				res.write(respuesta);
 				res.end();
 			});
+		} else if (parsedUrl.pathname.slice(0, 8) === "/filter") {
+			filtrar(search).then((respuesta) => {
+				res.end(respuesta);
+			});
 		}
 	});
 });
@@ -39,4 +43,19 @@ async function inicializa() {
 	let respuesta = JSON.stringify(documentos);
 	await client.close();
 	return respuesta;
+}
+
+async function filtrar(params) {
+	await client.connect();
+	const db = client.db(myDb);
+	const collection = db.collection("propuestas");
+	const tipo = params.get("tipo");
+	let busqueda = {};
+	if (tipo === "posicionInput") {
+		busqueda.puesto = params.get("filtro");
+	} else busqueda.lugar = params.get("filtro");
+	let documentos = await collection.find(busqueda).toArray();
+	console.log(documentos);
+	await client.close();
+	return JSON.stringify(documentos);
 }

@@ -47,7 +47,7 @@
 		</header>
 		<div id="cuerpo"></div>
 		<aside id="Filtros">
-			<form method="GET" action="http://localhost:8080/">
+			<form id="formulario">
 				<div>
 					<div>
 						<label for="filtro"> Filtros</label>
@@ -74,7 +74,7 @@
 					/><label for="lugarInput">Lugar </label>
 				</div>
 				<div>
-					<button type="button" onclick="console.log('HOla')">
+					<button type="button" onclick="aplicaFiltro()">
 						Buscar
 					</button>
 				</div>
