@@ -17,16 +17,11 @@ function incializa() {
 }
 
 function aplicaFiltro() {
-	let formulario = document.getElementById("formulario");
-
-	let filtro = document.getElementById("filtro").value;
-	let tipo = document.getElementById("lugarInput").checked
+	let params = {};
+	params.filtro = document.getElementById("filtro").value;
+	params.tipo = document.getElementById("lugarInput").checked
 		? "lugarInput"
 		: "posicionInput";
-
-	let params = {};
-	params.filtro = filtro;
-	params.tipo = tipo;
 	let urlParam = new URLSearchParams(params);
 	console.log(urlParam.toString());
 
