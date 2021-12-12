@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="login.css" />
+		<script src="./index.js"></script>
 		<title>FaltaUno.com - Login</title>
 	</head>
 	<body>
@@ -31,5 +32,20 @@
 				</ul>
 			</nav>
 		</header>
+		<form id="loginForm">
+			<label for="identificador" class="elementoFormulario"
+				>Usuario</label
+			>
+			<input type="text" id="identificador" />
+			<label for="contrasenia" class="elementoFormulario"
+				>Contraseña</label
+			>
+			<input type="password" id="contrasenia" />
+			<button type="button" onclick="iniciaSesion()">Ingresar</button>
+		</form>
+		<p>
+			No tenes una cuenta?
+			<a href="#" onclick="">Creala</a>
+		</p>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Raleway:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@300&display=swap");
 
 html {
 	height: 100%;
@@ -6,7 +6,10 @@ html {
 
 header {
 	display: block;
-	background-color: #759851;
+	background-image: url(https://media.cdnp.elobservador.com.uy/102019/1570231150178.jpg);
+	background-repeat: no-repeat;
+	background-position-y: -800px;
+	background-size: 105%;
 	min-height: 100%;
 	margin: 0;
 }
@@ -14,7 +17,7 @@ header {
 body {
 	min-height: 100%;
 	margin: 0;
-	background-color: #73d629;
+	background-color: #000;
 }
 
 #nombrePagina {
@@ -22,7 +25,7 @@ body {
 	display: inline-block;
 	vertical-align: bottom;
 	text-align: end;
-	font-family: Raleway;
+	font-family: Bebas Neue;
 	font-style: italic;
 	font-size: 50px;
 	margin: 12px;
@@ -38,7 +41,6 @@ body {
 
 .elementoNavegacion {
 	display: inline;
-
 	border-right: 1px solid black;
 }
 
@@ -51,4 +53,13 @@ body {
 #iniciarSesion {
 	float: right;
 	border-right: none;
+}
+
+p {
+	color: white;
+}
+
+.elementoFormulario {
+	font-family: Teko;
+	color: white;
 }
