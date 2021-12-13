@@ -9,3 +9,8 @@ function iniciaSesion() {
 		body: JSON.stringify(peticion),
 	});
 }
+
+function cambiaPagina(pagina) {
+	console.log(pagina);
+	window.location.replace(`http://localhost:8080/${pagina}`);
+}

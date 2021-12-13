@@ -73,12 +73,7 @@ function creaPropuesta(id, propuesta, template, destino) {
 
 function cambiaPagina(pagina) {
 	console.log(pagina);
-	//TODO cambiar de pagina traves de js
-	/*fetch(`http://localhost:8080/${pagina}`, {
-		method: "GET",
-		mode: "cors",
-	});*/
-	window.location.replace("http://localhost:8080/login");
+	window.location.replace(`http://localhost:8080/${pagina}`);
 }
 
 incializa();

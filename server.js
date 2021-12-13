@@ -33,9 +33,10 @@ const server = http.createServer(function (req, res) {
 					else res.statusCode = 200;
 					res.end();
 				});
+			} else if (servicio.slice(0, 14) === "crearPropuesta") {
+				crearPropuesta(JSON.parse(body)).then(res.end());
 			}
 		} else {
-			//TODO cambiar para que segun el tipo de archivo (css, js) los redireccione a la peticion que hicieron
 			let extensiones = tipo.split(".");
 			if (extensiones[1] !== undefined) {
 				if (extensiones[1] === "css")
@@ -47,9 +48,6 @@ const server = http.createServer(function (req, res) {
 			} else {
 				res.writeHead(200, { "Content-Type": "text/html" });
 				if (tipo !== "") tipo += ".html";
-				/*console.log("Se devolveria el html de la pagina de inicio");
-				else if (tipo === "login")
-					console.log("Se devolvia la pagina del login");*/
 			}
 
 			let archivo;
@@ -59,36 +57,6 @@ const server = http.createServer(function (req, res) {
 
 			res.write(archivo);
 			res.end();
-			/*if (tipo === "") {
-				let html = fs.readFileSync("./principal/principal.html");
-				res.writeHead(200, {
-					"Content-Type": "text/html",
-					"Content-Length": html.length,
-				});
-				res.write(html);
-				res.end();
-			} else if (tipo === "principal.css") {
-				let css = fs.readFileSync("./principal/principal.css");
-				res.writeHead(200, { "Content-Type": "text/css" });
-				res.write(css);
-				res.end();
-			} else if (tipo === "index.js") {
-				let js = fs.readFileSync("./index.js");
-				res.writeHead(200, {
-					"Content-Type": "application/javascript",
-				});
-				res.write(js);
-				res.end();
-			} else if (tipo === "login") {
-				console.log("Llegamos al login");
-				let html = fs.readFileSync("./login/login.html");
-				res.writeHead(200, {
-					"Content-Type": "text/html",
-					"Content-Length": html.length,
-				});
-				res.write(html);
-				res.end();
-			}*/
 		}
 	});
 });
@@ -109,8 +77,6 @@ async function filtrar(params) {
 		else busqueda.lugar = params.get("filtro");
 	}
 	let documentos = await collection.find(busqueda).toArray();
-
-	//console.log(documentos);
 	await client.close();
 	return JSON.stringify(documentos);
 }
@@ -126,4 +92,12 @@ async function iniciaSesion(body) {
 	} else {
 		if (document.contrasenia !== body.contrasenia) return null;
 	}
+}
+
+async function crearPropuesta(params) {
+	await client.connect();
+	const db = client.db(myDb);
+	const collection = db.collection("propuestas");
+	await collection.insertOne(params);
+	await client.close();
 }
