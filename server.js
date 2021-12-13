@@ -20,7 +20,7 @@ const server = http.createServer(function (req, res) {
 		//console.log(parsedUrl);
 
 		let particiones = parsedUrl.pathname.split("/");
-		const tipo = particiones[1];
+		let tipo = particiones[1];
 		const servicio = particiones[2];
 		if (tipo === "api") {
 			if (servicio.slice(0, 6) === "filter") {
@@ -35,7 +35,31 @@ const server = http.createServer(function (req, res) {
 				});
 			}
 		} else {
-			if (tipo === "") {
+			//TODO cambiar para que segun el tipo de archivo (css, js) los redireccione a la peticion que hicieron
+			let extensiones = tipo.split(".");
+			if (extensiones[1] !== undefined) {
+				if (extensiones[1] === "css")
+					res.writeHead(200, { "Content-Type": "text/css" });
+				else if (extensiones[1] === "js")
+					res.writeHead(200, {
+						"Content-Type": "application/javascript",
+					});
+			} else {
+				res.writeHead(200, { "Content-Type": "text/html" });
+				if (tipo !== "") tipo += ".html";
+				/*console.log("Se devolveria el html de la pagina de inicio");
+				else if (tipo === "login")
+					console.log("Se devolvia la pagina del login");*/
+			}
+
+			let archivo;
+			if (tipo === "")
+				archivo = fs.readFileSync("./principal/principal.html");
+			else archivo = fs.readFileSync(`./${extensiones[0]}/${tipo}`);
+
+			res.write(archivo);
+			res.end();
+			/*if (tipo === "") {
 				let html = fs.readFileSync("./principal/principal.html");
 				res.writeHead(200, {
 					"Content-Type": "text/html",
@@ -56,6 +80,7 @@ const server = http.createServer(function (req, res) {
 				res.write(js);
 				res.end();
 			} else if (tipo === "login") {
+				console.log("Llegamos al login");
 				let html = fs.readFileSync("./login/login.html");
 				res.writeHead(200, {
 					"Content-Type": "text/html",
@@ -63,7 +88,7 @@ const server = http.createServer(function (req, res) {
 				});
 				res.write(html);
 				res.end();
-			}
+			}*/
 		}
 	});
 });
@@ -85,7 +110,7 @@ async function filtrar(params) {
 	}
 	let documentos = await collection.find(busqueda).toArray();
 
-	console.log(documentos);
+	//console.log(documentos);
 	await client.close();
 	return JSON.stringify(documentos);
 }
