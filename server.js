@@ -1,9 +1,25 @@
 const http = require("http");
 const url = require("url");
 const fs = require("fs");
-const { MongoClient } = require("mongodb");
-const client = new MongoClient("mongodb://localhost:27017");
-const myDb = "faltaUno";
+const mongoose = require("mongoose");
+const myDb = "mongodb://localhost:27017/faltaUno";
+
+const propuestasSchema = new mongoose.Schema({
+	equipo: { type: String, required: true },
+	dia: { type: Date, required: true },
+	puesto: { type: String, required: true },
+	lugar: { type: String, required: true },
+	descripcion: { type: String, required: true },
+	precio: { type: Number, required: true },
+});
+
+const userSchema = new mongoose.Schema({
+	usuario: { type: String, required: true },
+	contrasenia: { type: String, required: true },
+});
+
+const propuestaModel = mongoose.model("propuesta", propuestasSchema);
+const userModel = mongoose.model("usuario", userSchema);
 
 const server = http.createServer(function (req, res) {
 	let body = "";
@@ -66,38 +82,31 @@ server.listen(8080, () => {
 });
 
 async function filtrar(params) {
-	await client.connect();
-	const db = client.db(myDb);
-	const collection = db.collection("propuestas");
+	await mongoose.connect(myDb);
 	let busqueda = {};
 	if (!params.keys().next().done) {
-		//! Es la unica forma que encontre de chequear que este vacio
+		//! Es la unica forma que encontre de chequear que no este vacio
 		const tipo = params.get("tipo");
 		if (tipo === "posicionInput") busqueda.puesto = params.get("filtro");
 		else busqueda.lugar = params.get("filtro");
 	}
-	let documentos = await collection.find(busqueda).toArray();
-	await client.close();
+	let documentos = await propuestaModel.find(busqueda);
+	await mongoose.disconnect();
 	return JSON.stringify(documentos);
 }
 
 async function iniciaSesion(body) {
+	await mongoose.connect(myDb);
 	let usuario = body.identificador;
-	await client.connect();
-	const db = client.db(myDb);
-	const collection = db.collection("usuarios");
-	let document = await collection.findOne({ usuario: usuario });
-	if (document === null) {
-		return null;
-	} else {
-		if (document.contrasenia !== body.contrasenia) return null;
-	}
+	let document = await userModel.findOne({}).where("usuario").equals(usuario);
+	await mongoose.disconnect();
+	if (document === null) return null;
+	else if (document.contrasenia !== body.contrasenia) return null;
 }
 
 async function crearPropuesta(params) {
-	await client.connect();
-	const db = client.db(myDb);
-	const collection = db.collection("propuestas");
-	await collection.insertOne(params);
-	await client.close();
+	await mongoose.connect(myDb);
+	const documento = new propuestaModel(params);
+	await documento.save();
+	await mongoose.disconnect();
 }
