@@ -25,6 +25,7 @@ const server = http.createServer(function (req, res) {
 	let body = "";
 
 	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Access-Control-Allow-Credentials", true);
 
 	req.on("data", (chunk) => {
 		body += chunk;
@@ -34,7 +35,7 @@ const server = http.createServer(function (req, res) {
 		let parsedUrl = new url.URL(req.url, "http://localhost:8080");
 		let search = parsedUrl.searchParams;
 		//console.log(parsedUrl);
-
+		console.log(body);
 		let particiones = parsedUrl.pathname.split("/");
 		let tipo = particiones[1];
 		const servicio = particiones[2];
@@ -105,6 +106,7 @@ async function iniciaSesion(body) {
 }
 
 async function crearPropuesta(params) {
+	console.log(params);
 	await mongoose.connect(myDb);
 	const documento = new propuestaModel(params);
 	await documento.save();

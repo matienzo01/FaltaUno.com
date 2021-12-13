@@ -12,10 +12,9 @@ function creaPropuesta() {
 	fetch("http://localhost:8080/api/crearPropuesta", {
 		method: "POST",
 		mode: "cors",
-		body: params,
-	})
-		.then((respose) => respose.json())
-		.then(console.log("Propuesta creada con exito"));
+		body: JSON.stringify(params),
+		headers: { "Access-Control-Allow-Credentials": true },
+	}).then(console.log("Propuesta creada con exito"));
 }
 
 function cambiaPagina(pagina) {
