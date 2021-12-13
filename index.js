@@ -1,5 +1,5 @@
 function incializa() {
-	fetch("http://localhost:8080/", {
+	fetch("http://localhost:8080/api/filter", {
 		method: "GET",
 		mode: "cors",
 	})
@@ -27,7 +27,7 @@ function aplicaFiltro() {
 
 	document.getElementById("cuerpo").innerHTML = "";
 
-	fetch("http://localhost:8080/filter?" + urlParam.toString(), {
+	fetch("http://localhost:8080/api/filter?" + urlParam.toString(), {
 		method: "GET",
 		mode: "cors",
 	})
@@ -69,6 +69,10 @@ function creaPropuesta(id, propuesta, template, destino) {
 		.setAttribute("id", `Descripcion${id}`);
 
 	destino.appendChild(response);
+}
+
+function cambiaPagina(pagina) {
+	//TODO cambiar de paginaa traves de js
 }
 
 incializa();
