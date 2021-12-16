@@ -2,6 +2,10 @@ const http = require("http");
 const url = require("url");
 const fs = require("fs");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const cookie = require("cookie");
+
 const myDb = "mongodb://localhost:27017/faltaUno";
 const { userModel } = require("./models/userModel");
 const { propuestaModel } = require("./models/propuestaModel");
@@ -30,13 +34,21 @@ const server = http.createServer(function (req, res) {
 					res.end(respuesta);
 				});
 			} else if (servicio.slice(0, 6) === "login") {
-				iniciaSesion(JSON.parse(body)).then((respuesta) => {
-					if (respuesta === null) res.statusCode = 406;
-					else res.statusCode = 200;
-					res.end();
-				});
+				iniciaSesion(JSON.parse(body))
+					.then((respuesta) => {
+						let prueba = cookie.serialize("jwt", respuesta);
+						console.log(cookie);
+						res.writeHead(200, { "Set-Cookie": prueba });
+						res.end();
+					})
+					.catch((err) => {
+						res.statusCode = 406;
+						res.end();
+					});
 			} else if (servicio.slice(0, 14) === "crearPropuesta") {
 				crearPropuesta(JSON.parse(body)).then(res.end());
+			} else if (servicio.slice(0, 8) === "register") {
+				registraUsuario(JSON.parse(body)).then(res.end());
 			}
 		} else {
 			let extensiones = tipo.split(".");
@@ -81,15 +93,33 @@ async function filtrar(params) {
 	return JSON.stringify(documentos);
 }
 
+async function registraUsuario(params) {
+	let salt = await bcrypt.genSalt(10);
+	params.contrasenia = await bcrypt.hash(params.contrasenia, salt);
+	await mongoose.connect(myDb);
+	await userModel.create(params);
+	await mongoose.disconnect();
+}
+
 async function iniciaSesion(body) {
-	//TODO implementar con try catch
 	//TODO implementar autentificacion
 	await mongoose.connect(myDb);
 	let usuario = body.identificador;
-	let document = await userModel.findOne({}).where("usuario").equals(usuario);
+	let document = await userModel
+		.findOne({})
+		.where("identificador")
+		.equals(usuario);
+	//console.log(document.contrasenia, "    ", body.contrasenia);
 	await mongoose.disconnect();
-	if (document === null) return null;
-	else if (document.contrasenia !== body.contrasenia) return null;
+	if (document === null) throw Error("Identificador no coincidente");
+	else if (!(await bcrypt.compare(body.contrasenia, document.contrasenia)))
+		throw Error("Contraseña incorrecta");
+	else {
+		console.log("llegue al final");
+		let id = document._id;
+		let token = await jwt.sign({ id }, "estoy probando");
+		return token;
+	}
 }
 
 async function crearPropuesta(params) {
