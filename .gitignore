@@ -2,3 +2,4 @@ node_modules/
 playgrounds/
 *.png
 .vs/
+.env

@@ -1,4 +1,5 @@
 function incializa() {
+	sessionStorage.clear();
 	fetch("http://localhost:8080/api/filter", {
 		method: "GET",
 		mode: "cors",
@@ -23,8 +24,6 @@ function aplicaFiltro() {
 		? "lugarInput"
 		: "posicionInput";
 	let urlParam = new URLSearchParams(params);
-	console.log(urlParam.toString());
-
 	document.getElementById("cuerpo").innerHTML = "";
 
 	fetch("http://localhost:8080/api/filter?" + urlParam.toString(), {
@@ -43,6 +42,7 @@ function aplicaFiltro() {
 		});
 }
 
+//FIXME modularizar mejor funcion, se repite mucho el cambio de contenido e ID
 function creaPropuesta(id, propuesta, template, destino) {
 	let response = template.cloneNode(true);
 	response.getElementById("propuesta").setAttribute("id", `propuesta${id}`);
@@ -68,12 +68,34 @@ function creaPropuesta(id, propuesta, template, destino) {
 		.getElementById("Descripcion")
 		.setAttribute("id", `Descripcion${id}`);
 
+	response
+		.getElementById("bottonDetalles")
+		.setAttribute("id", `bottonDetalles${id}`);
 	destino.appendChild(response);
 }
 
 function cambiaPagina(pagina) {
 	console.log(pagina);
 	window.location.replace(`http://localhost:8080/${pagina}`);
+}
+
+function verPropuesta(id) {
+	console.log(id);
+	let equipoPuesto = document.getElementById(`EquipoPuesto${id}`).innerHTML;
+	equipoPuesto = equipoPuesto.split(" - ");
+	let equipo = equipoPuesto[0];
+	let puesto = equipoPuesto[1];
+
+	let lugarHorario = document.getElementById(`LugarHorario${id}`).innerHTML;
+	lugarHorario = lugarHorario.split(" - ");
+	let lugar = lugarHorario[0];
+	let dia = lugarHorario[1];
+
+	let descripcion = document.getElementById(`Descripcion${id}`).innerHTML;
+	let propuestaObjeto = { equipo, puesto, lugar, dia, descripcion };
+	let propuestaURL = new URLSearchParams(propuestaObjeto);
+
+	cambiaPagina("propuesta?" + propuestaURL.toString());
 }
 
 incializa();
