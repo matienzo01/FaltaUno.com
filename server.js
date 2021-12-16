@@ -3,23 +3,8 @@ const url = require("url");
 const fs = require("fs");
 const mongoose = require("mongoose");
 const myDb = "mongodb://localhost:27017/faltaUno";
-
-const propuestasSchema = new mongoose.Schema({
-	equipo: { type: String, required: true },
-	dia: { type: Date, required: true },
-	puesto: { type: String, required: true },
-	lugar: { type: String, required: true },
-	descripcion: { type: String, required: true },
-	precio: { type: Number, required: true },
-});
-
-const userSchema = new mongoose.Schema({
-	usuario: { type: String, required: true },
-	contrasenia: { type: String, required: true },
-});
-
-const propuestaModel = mongoose.model("propuesta", propuestasSchema);
-const userModel = mongoose.model("usuario", userSchema);
+const { userModel } = require("./models/userModel");
+const { propuestaModel } = require("./models/propuestaModel");
 
 const server = http.createServer(function (req, res) {
 	let body = "";
@@ -35,7 +20,7 @@ const server = http.createServer(function (req, res) {
 		let parsedUrl = new url.URL(req.url, "http://localhost:8080");
 		let search = parsedUrl.searchParams;
 		//console.log(parsedUrl);
-		console.log(body);
+		//console.log(body);
 		let particiones = parsedUrl.pathname.split("/");
 		let tipo = particiones[1];
 		const servicio = particiones[2];
@@ -98,6 +83,7 @@ async function filtrar(params) {
 
 async function iniciaSesion(body) {
 	//TODO implementar con try catch
+	//TODO implementar autentificacion
 	await mongoose.connect(myDb);
 	let usuario = body.identificador;
 	let document = await userModel.findOne({}).where("usuario").equals(usuario);
@@ -107,10 +93,7 @@ async function iniciaSesion(body) {
 }
 
 async function crearPropuesta(params) {
-	console.log(params);
 	await mongoose.connect(myDb);
 	await propuestaModel.create(params);
 	await mongoose.disconnect();
 }
-
-//TODO implementar autentificacion

@@ -1,5 +1,4 @@
 function iniciaSesion() {
-	//TODO implementar verdadera autentificacion
 	const peticion = {};
 	peticion.identificador = document.getElementById("identificador").value;
 	peticion.password = document.getElementById("contrasenia").value;
