@@ -2,9 +2,10 @@ function iniciaSesion() {
 	//TODO implementar verdadera autentificacion
 	const peticion = {};
 	peticion.identificador = document.getElementById("identificador").value;
-	peticion.password = document.getElementById("contrasenia").value;
+	peticion.contrasenia = document.getElementById("contrasenia").value;
 	console.log(peticion);
-	fetch("http://localhost:8080/login", {
+	fetch("http://localhost:8080/api/login", {
+		credentials: "include",
 		method: "POST",
 		mode: "cors",
 		body: JSON.stringify(peticion),

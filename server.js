@@ -13,8 +13,9 @@ const { propuestaModel } = require("./models/propuestaModel");
 const server = http.createServer(function (req, res) {
 	let body = "";
 
-	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader("Access-Control-Allow-Origin", "localhost:8080");
 	res.setHeader("Access-Control-Allow-Credentials", true);
+	res.setHeader("Access-Control-Expose-Headers", "Set-Cookie");
 
 	req.on("data", (chunk) => {
 		body += chunk;
@@ -36,9 +37,13 @@ const server = http.createServer(function (req, res) {
 			} else if (servicio.slice(0, 6) === "login") {
 				iniciaSesion(JSON.parse(body))
 					.then((respuesta) => {
-						let prueba = cookie.serialize("jwt", respuesta);
-						console.log(cookie);
-						res.writeHead(200, { "Set-Cookie": prueba });
+						let galleta = cookie.serialize("jwt", respuesta, {
+							httpOnly: true,
+							path: "/",
+						});
+						res.writeHead(200, {
+							"Set-Cookie": galleta,
+						});
 						res.end();
 					})
 					.catch((err) => {
@@ -95,6 +100,7 @@ async function filtrar(params) {
 
 async function registraUsuario(params) {
 	let salt = await bcrypt.genSalt(10);
+	console.log(params);
 	params.contrasenia = await bcrypt.hash(params.contrasenia, salt);
 	await mongoose.connect(myDb);
 	await userModel.create(params);

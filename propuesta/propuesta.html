@@ -4,13 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="principal.css" />
+		<link rel="stylesheet" href="propuesta.css" />
 		<title>FaltaUno.com</title>
-		<script src="./principal.js"></script>
+		<script src="./propuesta.js"></script>
 	</head>
 	<body>
 		<template id="template">
-			<!--TODO añadir boton interactivo-->
 			<article id="propuesta" class="Propuesta">
 				<div class="contendorDescripcion">
 					<h1 class="elementoPropuesta" id="EquipoPuesto"></h1>
@@ -45,40 +44,5 @@
 			</nav>
 		</header>
 		<div id="cuerpo"></div>
-		<aside id="Filtros">
-			<form id="formulario">
-				<div>
-					<div>
-						<label for="filtro"> Filtros</label>
-					</div>
-					<input
-						type="text"
-						id="filtro"
-						name="filter"
-						placeholder="ej: &quot Defensor &quot o &quot La verde &quot"
-					/>
-				</div>
-				<div>
-					<input
-						type="radio"
-						name="tipo"
-						id="posicionInput"
-						value="posicion"
-					/><label for="posicionInput">Posicion </label>
-					<input
-						type="radio"
-						name="tipo"
-						id="lugarInput"
-						value="lugar"
-					/><label for="lugarInput">Lugar </label>
-				</div>
-				<!--TODO implementar mas filtros-->
-				<div>
-					<button type="button" onclick="aplicaFiltro()">
-						Buscar
-					</button>
-				</div>
-			</form>
-		</aside>
 	</body>
 </html>

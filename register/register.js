@@ -1,7 +1,7 @@
 function register() {
 	const peticion = {};
 	peticion.identificador = document.getElementById("identificador").value;
-	peticion.password = document.getElementById("contrasenia").value;
+	peticion.contrasenia = document.getElementById("contrasenia").value;
 	fetch("http://localhost:8080/api/register", {
 		method: "POST",
 		mode: "cors",
