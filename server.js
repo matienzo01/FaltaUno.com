@@ -97,6 +97,7 @@ async function filtrar(params) {
 }
 
 async function iniciaSesion(body) {
+	//TODO implementar con try catch
 	await mongoose.connect(myDb);
 	let usuario = body.identificador;
 	let document = await userModel.findOne({}).where("usuario").equals(usuario);
@@ -108,7 +109,8 @@ async function iniciaSesion(body) {
 async function crearPropuesta(params) {
 	console.log(params);
 	await mongoose.connect(myDb);
-	const documento = new propuestaModel(params);
-	await documento.save();
+	await propuestaModel.create(params);
 	await mongoose.disconnect();
 }
+
+//TODO implementar autentificacion

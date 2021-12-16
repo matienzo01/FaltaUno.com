@@ -3,7 +3,6 @@ function creaPropuesta() {
 	params.equipo = document.getElementById("nombreEquipoInput").value;
 	params.puesto = document.getElementById("posicionInput").value;
 	params.dia = document.getElementById("diaInput").value;
-	//FIXME ver que onda como se puede formatear lo de la hora
 	params.lugar = document.getElementById("lugarInput").value;
 	params.descripcion = document.getElementById("descripcionInput").value;
 	params.precio = document.getElementById("precioInput").value;
