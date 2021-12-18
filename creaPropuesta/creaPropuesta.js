@@ -6,7 +6,6 @@ function creaPropuesta() {
 	params.lugar = document.getElementById("lugarInput").value;
 	params.descripcion = document.getElementById("descripcionInput").value;
 	params.precio = document.getElementById("precioInput").value;
-	console.log(params);
 
 	fetch("http://localhost:8080/api/crearPropuesta", {
 		method: "POST",
@@ -17,6 +16,5 @@ function creaPropuesta() {
 }
 
 function cambiaPagina(pagina) {
-	console.log(pagina);
 	window.location.replace(`http://localhost:8080/${pagina}`);
 }

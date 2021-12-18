@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@300&display=swap");
 
-/*FIXME ver que onda como se puede formatear lo de la hora*/
-/*TODO cambiar todas las referencias a relativos*/
-
 html {
 	height: 100%;
 }
@@ -31,8 +28,8 @@ body {
 	font-family: Bebas Neue;
 	font-style: italic;
 	font-size: 50px;
-	margin: 12px;
-	padding: 20px;
+	margin: 0.2em;
+	padding: 0.5em;
 }
 #barraNavegacion {
 	list-style-type: none;
@@ -44,7 +41,6 @@ body {
 
 .elementoNavegacion {
 	display: inline;
-
 	border-right: 1px solid black;
 }
 
@@ -62,44 +58,45 @@ body {
 
 #cuerpo {
 	display: inline-block;
+	width: 70vw;
 }
 
 .Propuesta {
 	background-color: #49493f;
 	color: white;
 	display: block;
-	width: 1084px;
 	padding: 15px;
 	margin: 15px;
 	border: 1px solid #000;
 }
 
 .elementoPropuesta {
-	display: inline-block;
-	width: 900px;
 	font-family: Teko;
 }
 
 .contendorDescripcion {
 	display: inline-block;
-	width: 900px;
+	width: 80%;
 }
 
 .imagen {
-	max-width: 150px;
+	max-width: 18%;
+	display: inline-block;
 }
 
 #Filtros {
-	margin: 15px;
-	padding: 20px;
+	margin: 3%;
+	padding: 3%;
 	position: sticky;
+	top: 30px;
 	float: right;
-	width: 210px;
+	width: 15%;
 	background-color: red;
-	margin-right: 50px;
+	text-align: center;
 }
 
 #filtro {
-	width: 200px;
+	width: 80%;
+
 	border-radius: 5px;
 }

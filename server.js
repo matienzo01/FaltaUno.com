@@ -20,11 +20,15 @@ const server = http.createServer(function (req, res) {
 	req.on("end", () => {
 		let parsedUrl = new url.URL(req.url, "http://localhost:8080");
 		let search = parsedUrl.searchParams;
-		//console.log(parsedUrl);
+		console.log(parsedUrl);
 		//console.log(body);
 		let particiones = parsedUrl.pathname.split("/");
+
 		let tipo = particiones[1];
 		const servicio = particiones[2];
+
+		let query = parsedUrl.search.split("?")[1];
+
 		if (tipo === "api") {
 			if (servicio.slice(0, 6) === "filter") {
 				propuestaModel.filtrar(search).then((respuesta) => {
@@ -41,11 +45,13 @@ const server = http.createServer(function (req, res) {
 						res.writeHead(200, {
 							"Set-Cookie": galleta,
 						});
+						res.end();
 					})
 					.catch((err) => {
+						console.log(err.message);
 						res.statusCode = 406;
+						res.end();
 					});
-				res.end();
 			} else if (servicio.slice(0, 14) === "crearPropuesta") {
 				propuestaModel.crearPropuesta(JSON.parse(body)).then(res.end());
 			} else if (servicio.slice(0, 8) === "register") {
@@ -53,6 +59,7 @@ const server = http.createServer(function (req, res) {
 			}
 		} else {
 			let extensiones = tipo.split(".");
+			let archivo;
 			if (extensiones[1] !== undefined) {
 				if (extensiones[1] === "css")
 					res.writeHead(200, { "Content-Type": "text/css" });
@@ -60,16 +67,26 @@ const server = http.createServer(function (req, res) {
 					res.writeHead(200, {
 						"Content-Type": "application/javascript",
 					});
+				archivo = fs.readFileSync(`./${extensiones[0]}/${tipo}`);
 			} else {
-				res.writeHead(200, { "Content-Type": "text/html" });
-				if (tipo !== "") tipo += ".html";
+				console.log(extensiones[0]);
+				let pagina = extensiones[0];
+				console.log(pagina);
+				console.log(query);
+				if (query === undefined) {
+					res.writeHead(200, { "Content-Type": "text/html" });
+					if (pagina === "")
+						archivo = fs.readFileSync("./principal/principal.html");
+					else
+						archivo = fs.readFileSync(
+							`./${extensiones[0]}/${pagina}.html`
+						);
+				} else {
+					res.writeHead(200);
+					console.log("Llegamos bien");
+					archivo = "hola";
+				}
 			}
-
-			let archivo;
-			if (tipo === "")
-				archivo = fs.readFileSync("./principal/principal.html");
-			else archivo = fs.readFileSync(`./${extensiones[0]}/${tipo}`);
-
 			res.write(archivo);
 			res.end();
 		}

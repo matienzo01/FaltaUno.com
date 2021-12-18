@@ -45,6 +45,7 @@ function aplicaFiltro() {
 //FIXME modularizar mejor funcion, se repite mucho el cambio de contenido e ID
 function creaPropuesta(id, propuesta, template, destino) {
 	let response = template.cloneNode(true);
+
 	response.getElementById("propuesta").setAttribute("id", `propuesta${id}`);
 
 	response.getElementById(
@@ -56,7 +57,7 @@ function creaPropuesta(id, propuesta, template, destino) {
 
 	response.getElementById(
 		`LugarHorario`
-	).innerHTML = `${propuesta.lugar} - ${propuesta.hora}`;
+	).innerHTML = `${propuesta.lugar} - <time> ${propuesta.dia}</time>`;
 	response
 		.getElementById("LugarHorario")
 		.setAttribute("id", `LugarHorario${id}`);
@@ -75,12 +76,11 @@ function creaPropuesta(id, propuesta, template, destino) {
 }
 
 function cambiaPagina(pagina) {
-	console.log(pagina);
 	window.location.replace(`http://localhost:8080/${pagina}`);
 }
 
+//TODO implementar cambio de pagina al ver propuesta
 function verPropuesta(id) {
-	console.log(id);
 	let equipoPuesto = document.getElementById(`EquipoPuesto${id}`).innerHTML;
 	equipoPuesto = equipoPuesto.split(" - ");
 	let equipo = equipoPuesto[0];
@@ -95,7 +95,8 @@ function verPropuesta(id) {
 	let propuestaObjeto = { equipo, puesto, lugar, dia, descripcion };
 	let propuestaURL = new URLSearchParams(propuestaObjeto);
 
-	cambiaPagina("propuesta?" + propuestaURL.toString());
+	console.log("propuesta?" + propuestaURL.toString());
+	//cambiaPagina("propuesta?" + propuestaURL.toString());
 }
 
 incializa();
