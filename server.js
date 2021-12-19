@@ -19,9 +19,9 @@ const server = http.createServer(function (req, res) {
 
 	req.on("end", () => {
 		let parsedUrl = new url.URL(req.url, "http://localhost:8080");
-		let search = parsedUrl.searchParams;
-		console.log(parsedUrl);
+		let search = URLsearchToObj(parsedUrl.searchParams);
 		//console.log(body);
+		//console.log(search);
 		let particiones = parsedUrl.pathname.split("/");
 
 		let tipo = particiones[1];
@@ -59,7 +59,6 @@ const server = http.createServer(function (req, res) {
 			}
 		} else {
 			let extensiones = tipo.split(".");
-			let archivo;
 			if (extensiones[1] !== undefined) {
 				if (extensiones[1] === "css")
 					res.writeHead(200, { "Content-Type": "text/css" });
@@ -67,28 +66,44 @@ const server = http.createServer(function (req, res) {
 					res.writeHead(200, {
 						"Content-Type": "application/javascript",
 					});
-				archivo = fs.readFileSync(`./${extensiones[0]}/${tipo}`);
+				archivo = fs.readFile(
+					`./${extensiones[0]}/${tipo}`,
+					(err, respuesta) => {
+						res.end(respuesta);
+					}
+				);
 			} else {
-				console.log(extensiones[0]);
 				let pagina = extensiones[0];
-				console.log(pagina);
-				console.log(query);
 				if (query === undefined) {
 					res.writeHead(200, { "Content-Type": "text/html" });
 					if (pagina === "")
-						archivo = fs.readFileSync("./principal/principal.html");
+						fs.readFile(
+							"./principal/principal.html",
+							(err, respuesta) => {
+								res.end(respuesta);
+							}
+						);
 					else
-						archivo = fs.readFileSync(
-							`./${extensiones[0]}/${pagina}.html`
+						fs.readFile(
+							`./${extensiones[0]}/${pagina}.html`,
+							(err, respuesta) => {
+								res.end(respuesta);
+							}
 						);
 				} else {
-					res.writeHead(200);
-					console.log("Llegamos bien");
-					archivo = "hola";
+					/*propuestaModel
+						.muestraPropuesta(search)
+						.then((respuesta) => {
+							console.log(typeof respuesta);
+							res.writeHead(200, { "Content-Type": "text/html" });
+							res.write(respuesta);
+							res.end();
+						});*/
+					fs.readFile("./propuesta/propuesta.html", (err, data) => {
+						res.end(data);
+					});
 				}
 			}
-			res.write(archivo);
-			res.end();
 		}
 	});
 });
@@ -96,3 +111,13 @@ const server = http.createServer(function (req, res) {
 server.listen(8080, () => {
 	console.log("Conectado satisfactoriamente");
 });
+
+function URLsearchToObj(URL) {
+	let params = "{";
+	URL.forEach((value, key) => {
+		params += ` "${key}": "${value}",`;
+	});
+	if (params !== "{") params = params.substring(0, params.length - 1);
+	params += "}";
+	return JSON.parse(params);
+}

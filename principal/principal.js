@@ -57,7 +57,7 @@ function creaPropuesta(id, propuesta, template, destino) {
 
 	response.getElementById(
 		`LugarHorario`
-	).innerHTML = `${propuesta.lugar} - <time> ${propuesta.dia}</time>`;
+	).innerHTML = `${propuesta.lugar} - ${propuesta.dia}`;
 	response
 		.getElementById("LugarHorario")
 		.setAttribute("id", `LugarHorario${id}`);
@@ -83,6 +83,7 @@ function cambiaPagina(pagina) {
 function verPropuesta(id) {
 	let equipoPuesto = document.getElementById(`EquipoPuesto${id}`).innerHTML;
 	equipoPuesto = equipoPuesto.split(" - ");
+	console.log(id);
 	let equipo = equipoPuesto[0];
 	let puesto = equipoPuesto[1];
 
@@ -96,7 +97,7 @@ function verPropuesta(id) {
 	let propuestaURL = new URLSearchParams(propuestaObjeto);
 
 	console.log("propuesta?" + propuestaURL.toString());
-	//cambiaPagina("propuesta?" + propuestaURL.toString());
+	cambiaPagina("propuesta?" + propuestaURL.toString());
 }
 
 incializa();
