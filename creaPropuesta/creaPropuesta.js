@@ -14,7 +14,3 @@ function creaPropuesta() {
 		headers: { "Access-Control-Allow-Credentials": true },
 	}).then(console.log("Propuesta creada con exito"));
 }
-
-function cambiaPagina(pagina) {
-	window.location.replace(`http://localhost:8080/${pagina}`);
-}

@@ -8,5 +8,30 @@
 	</head>
 	<body>
 		<!--TODO falta implementar todo el perfil-->
+		<nav id="navContainer">
+			<ul id="barraNavegacion">
+				<li class="elementoNavegacion">
+					<a
+						onclick="window.location.replace('http://localhost:8080/')"
+						>Buscar partido</a
+					>
+				</li>
+				<li class="elementoNavegacion">
+					<a
+						onclick="window.location.replace('http://localhost:8080/creaPropuesta')"
+						>Crear propuesta</a
+					>
+				</li>
+				<li class="elementoNavegacion">
+					<a href="./miPerfil/miPerfil.html">Mi Perfil</a>
+				</li>
+				<li class="elementoNavegacion" id="iniciarSesion">
+					<a
+						onclick="window.location.replace('http://localhost:8080/login')"
+						>Iniciar sesion</a
+					>
+				</li>
+			</ul>
+		</nav>
 	</body>
 </html>

@@ -29,14 +29,19 @@
 			</article>
 		</template>
 		<header>
+			<!--TODO mover todo el header a un elemento a parte-->
 			<h1 id="nombrePagina">FaltaUno.com</h1>
 			<nav id="navContainer">
 				<ul id="barraNavegacion">
 					<li class="elementoNavegacion">
-						<a onclick="cambiaPagina('')">Buscar partido</a>
+						<a
+							onclick="window.location.replace('http://localhost:8080/')"
+							>Buscar partido</a
+						>
 					</li>
 					<li class="elementoNavegacion">
-						<a onclick="cambiaPagina('creaPropuesta')"
+						<a
+							onclick="window.location.replace('http://localhost:8080/creaPropuesta')"
 							>Crear propuesta</a
 						>
 					</li>
@@ -44,7 +49,10 @@
 						<a href="./miPerfil/miPerfil.html">Mi Perfil</a>
 					</li>
 					<li class="elementoNavegacion" id="iniciarSesion">
-						<a onclick="cambiaPagina('login')">Iniciar sesion</a>
+						<a
+							onclick="window.location.replace('http://localhost:8080/login')"
+							>Iniciar sesion</a
+						>
 					</li>
 				</ul>
 			</nav>

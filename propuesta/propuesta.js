@@ -1,9 +1,3 @@
-function cambiaPagina(pagina) {
-	console.log(pagina);
-	window.location.replace(`http://localhost:8080/${pagina}`);
-}
-
-//TODO implementar recuperacion de valores para mostrar
 function rellenaHuecos() {
 	let busqueda = window.location.search;
 	fetch("http://localhost:8080/api/filter" + busqueda, {

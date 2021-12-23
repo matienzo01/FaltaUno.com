@@ -19,10 +19,11 @@ function incializa() {
 
 function aplicaFiltro() {
 	let params = {};
-	params.filtro = document.getElementById("filtro").value;
-	params.tipo = document.getElementById("lugarInput").checked
-		? "lugarInput"
-		: "posicionInput";
+	let key = document.getElementById("lugarInput").checked
+		? "lugar"
+		: "puesto";
+	let value = document.getElementById("filtro").value;
+	params = JSON.parse(`{ "${key}": "${value}" }`);
 	let urlParam = new URLSearchParams(params);
 	document.getElementById("cuerpo").innerHTML = "";
 
@@ -75,11 +76,6 @@ function creaPropuesta(id, propuesta, template, destino) {
 	destino.appendChild(response);
 }
 
-function cambiaPagina(pagina) {
-	window.location.replace(`http://localhost:8080/${pagina}`);
-}
-
-//TODO implementar cambio de pagina al ver propuesta
 function verPropuesta(id) {
 	let equipoPuesto = document.getElementById(`EquipoPuesto${id}`).innerHTML;
 	equipoPuesto = equipoPuesto.split(" - ");
@@ -96,7 +92,6 @@ function verPropuesta(id) {
 	let propuestaObjeto = { equipo, puesto, lugar, dia, descripcion };
 	let propuestaURL = new URLSearchParams(propuestaObjeto);
 
-	console.log("propuesta?" + propuestaURL.toString());
 	cambiaPagina("propuesta?" + propuestaURL.toString());
 }
 
