@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>FaltaUno.com - Nueva Propuesta</title>
+		<link rel="stylesheet" href="./creaPropuesta.css" />
+		<script src="./creaPropuesta.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1 id="nombrePagina">FaltaUno.com</h1>
+			<nav id="navContainer">
+				<ul id="barraNavegacion">
+					<li class="elementoNavegacion">
+						<a
+							onclick="window.location.replace('http://localhost:8080/')"
+							>Buscar partido</a
+						>
+					</li>
+					<li class="elementoNavegacion">
+						<a
+							onclick="window.location.replace('http://localhost:8080/creaPropuesta')"
+							>Crear propuesta</a
+						>
+					</li>
+					<li class="elementoNavegacion">
+						<a href="./miPerfil/miPerfil.html">Mi Perfil</a>
+					</li>
+					<li class="elementoNavegacion" id="iniciarSesion">
+						<a
+							onclick="window.location.replace('http://localhost:8080/login')"
+							>Iniciar sesion</a
+						>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div>
+			<form id="nuevaPropuesta">
+				<label for="nombreEquipoInput" class="elementoFormulario"
+					>Nombre del equipo</label
+				>
+				<input type="text" id="nombreEquipoInput" />
+				<label for="posicionInput" class="elementoFormulario"
+					>Posicion</label
+				>
+				<select id="posicionInput">
+					<option>Arquero</option>
+					<option>Defensor</option>
+					<option>Volante</option>
+					<option>Delantero</option>
+				</select>
+				<label for="diaInput" class="elementoFormulario"
+					>Dia y hora del partido</label
+				>
+				<input type="datetime-local" id="diaInput" />
+				<label for="lugarInput" class="elementoFormulario"
+					>Lugar del partido</label
+				>
+				<input type="text" id="lugarInput" />
+				<label for="descripcionInput" class="elementoFormulario"
+					>Descripcion</label
+				>
+				<input type="text" id="descripcionInput" />
+				<label for="precioInput" class="elementoFormulario"
+					>Precio de la cancha</label
+				>
+				<input type="number" id="precioInput" />
+				<button type="button" onclick="creaPropuesta()">
+					Crear nueva propuesta
+				</button>
+			</form>
+		</div>
+	</body>
+</html>

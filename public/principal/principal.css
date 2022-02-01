@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@300&display=swap");
+
+html {
+	height: 100%;
+}
+
+header {
+	display: block;
+	background-image: url(https://media.cdnp.elobservador.com.uy/102019/1570231150178.jpg);
+	background-repeat: no-repeat;
+	background-position-y: -800px;
+	background-size: 105%;
+	min-height: 100%;
+	margin: 0;
+}
+
+body {
+	min-height: 100%;
+	margin: 0;
+	background-color: #000;
+}
+
+#nombrePagina {
+	color: #ffffff;
+	display: inline-block;
+	vertical-align: bottom;
+	text-align: end;
+	font-family: Bebas Neue;
+	font-style: italic;
+	font-size: 50px;
+	margin: 0.2em;
+	padding: 0.5em;
+}
+#barraNavegacion {
+	list-style-type: none;
+	margin: 0;
+	background-color: #4cbb17;
+	border: 1px solid #000;
+	padding: 10px;
+}
+
+.elementoNavegacion {
+	display: inline;
+	border-right: 1px solid black;
+}
+
+.elementoNavegacion a {
+	color: black;
+	text-decoration: none;
+	padding: 4px;
+	cursor: pointer;
+}
+
+#iniciarSesion {
+	float: right;
+	border-right: none;
+}
+
+#cuerpo {
+	display: inline-block;
+	width: 70vw;
+}
+
+.Propuesta {
+	background-color: #49493f;
+	color: white;
+	display: block;
+	padding: 15px;
+	margin: 15px;
+	border: 1px solid #000;
+}
+
+.elementoPropuesta {
+	font-family: Teko;
+}
+
+.contendorDescripcion {
+	display: inline-block;
+	width: 80%;
+}
+
+.imagen {
+	max-width: 18%;
+	display: inline-block;
+}
+
+#Filtros {
+	margin: 3%;
+	padding: 3%;
+	position: sticky;
+	top: 30px;
+	float: right;
+	width: 15%;
+	background-color: red;
+	text-align: center;
+}
+
+#filtro {
+	width: 80%;
+
+	border-radius: 5px;
+}

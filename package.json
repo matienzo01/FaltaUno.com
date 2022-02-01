@@ -1,0 +1,26 @@
+{
+	"name": "faltauno.com",
+	"version": "1.0.0",
+	"description": "reservaFutbol",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/matienzo01/reservaFutbol.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/matienzo01/reservaFutbol/issues"
+	},
+	"homepage": "https://github.com/matienzo01/reservaFutbol#readme",
+	"dependencies": {},
+	"devDependencies": {
+		"eslint": "^8.8.0"
+	},
+	"workspaces": [
+		"api",
+		"app"
+	]
+}

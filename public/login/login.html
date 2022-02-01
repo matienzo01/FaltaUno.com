@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="login.css" />
+		<script src="./login.js"></script>
+		<title>FaltaUno.com - Login</title>
+	</head>
+	<body>
+		<header>
+			<h1 id="nombrePagina">FaltaUno.com</h1>
+			<nav id="navContainer">
+				<ul id="barraNavegacion">
+					<li class="elementoNavegacion">
+						<a onclick="cambiaPagina('')">Buscar partido</a>
+					</li>
+					<li class="elementoNavegacion">
+						<a onclick="cambiaPagina('creaPropuesta')"
+							>Crear propuesta</a
+						>
+					</li>
+					<li class="elementoNavegacion">
+						<a href="../miPerfil/miPerfil.html">Mi Perfil</a>
+					</li>
+					<li class="elementoNavegacion" id="iniciarSesion">
+						<a onclick="cambiaPagina('login')">Iniciar sesion</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<form id="loginForm">
+			<label for="identificador" class="elementoFormulario"
+				>Usuario</label
+			>
+			<input type="text" id="identificador" />
+			<label for="contrasenia" class="elementoFormulario"
+				>Contraseña</label
+			>
+			<input type="password" id="contrasenia" />
+			<button type="button" onclick="iniciaSesion()">Ingresar</button>
+		</form>
+		<p>
+			No tenes una cuenta?
+			<a onclick="cambiaPagina('register')">Creala</a>
+		</p>
+	</body>
+</html>
