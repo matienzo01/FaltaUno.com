@@ -1,9 +1,14 @@
 const http = require("http");
 const url = require("url");
 const fs = require("fs");
+const express = require('express');
+const app = express();
+
 const cookie = require("cookie");
-const apiRouter = require("./api/apiRouter");
+/*const apiRouter = require("./api/apiRouter");
 const publicRouter = require("./public/publicRouter");
+
+
 
 const server = http.createServer(function (req, res) {
 	let body = "";
@@ -26,8 +31,8 @@ const server = http.createServer(function (req, res) {
 			publicRouter.route(req, res);
 		}
 	});
-});
+});*/
 
-server.listen(8080, () => {
-	console.log("Conectado satisfactoriamente");
-});
+app.listen(8080, () => {
+	console.log("Conectado al nuevo server");
+})
