@@ -1,0 +1,36 @@
+Refactorizacion:
+    Back: 
+
+        Login:
+            ☐ Implementacion, a definir si con localStorage o cookie
+        
+        user: 
+            ☐ Ruta de eliminar un usuario
+            ☐ Ruta de modificar un usuario
+
+        Propuestas:
+            ☐ Ruta de devolucion de todas las propuestas
+            ☐ Ruta de devolucion de una nota en particular
+            ☐ Ruta de agregar una propuesta
+            ☐ Ruta de eliminar una propuesta
+            ☐ Ruta de modificar una propuesta
+        
+        ☐ Añadir test de casos limite
+
+    Front:
+        ☐ Investigar React-Dom-Router
+        ☐ Crear componente para cada una de las propuestas
+        ☐ Rediseño grafico la aplicacion
+
+        
+Implementacion:
+    Back:
+        ☐ Requerir el login para realizar ciertas funciones
+        ☐ El usuario guarde referencia las propuestas que creo
+        ☐ Poder postularse a una propuesta
+    Front:
+        ☐ Pagina del detalle de una propuesta con boton para postularse -> podria ser que la descripcion solo se muestre en esta parte junto con la foto y eso
+        ☐ Definir Redux
+        ☐ Resolver el filtro en el back
+
+    ☐ Ver si podria ser posible la implementacion de una foto de la posicion que se quiere q ocupe
