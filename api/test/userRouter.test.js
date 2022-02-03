@@ -24,8 +24,7 @@ describe("Test exitosos relacionados al router de usuarios", () => {
 
     beforeAll(async () => {
         try {
-
-            await mongoose.connect(process.env.DB_NAME);
+            await mongoose.connect(process.env.DB_NAME, { maxPoolSize: 5 });
         } catch (err) {
             console.log("El problema es al principo");
         }
@@ -43,27 +42,43 @@ describe("Test exitosos relacionados al router de usuarios", () => {
         const response = await api.get(baseURL + "/all").expect(200);
         const usersAvaliable = response.body;
 
+        //Como cada proceso tiene su propia coneccion al hacer el llamado a la api se desconecta mongo y hay q reconectar
+        await mongoose.connect(process.env.DB_NAME, { maxPoolSize: 5 });
         const DBAfter = await userModel.find({});
-        console.log(DBAfter);
 
         expect(DBAfter).toHaveLength(DBBefore.length);
         expect(usersAvaliable).toHaveLength(usersInciales.length);
     });
 
-    /*test("GET en ruta con :id deberia devolver el usuario con dicho id", async () => {
+    test("GET en ruta con :id deberia devolver el usuario con dicho id", async () => {
         const userParaId = await userModel.findOne({ identificador: "Matienzo" });
-        console.log(userParaId);
         const response = await api.get(baseURL + "/" + userParaId.id);
+        await mongoose.connect(process.env.DB_NAME, { maxPoolSize: 5 });
+
+
         const usuarioEncontrado = response.body;
 
         expect(usuarioEncontrado).toHaveProperty("identificador", "Matienzo");
-        expect(2).toBe(2);
-    });*/
+    });
+
+    test("POST en ruta / debe agregar un usuario", async () => {
+        const newUser = { identificador: "Usuario nuevo", contrasenia: "Hola que tal" };
+
+        const response = await api.post(baseURL).send(newUser).expect(201);
+        const userCreated = response.body;
+
+        mongoose.connect(process.env.DB_NAME);
+
+        const userInDB = await userModel.findOne({ identificador: "Usuario nuevo" });
+
+        expect(userCreated).toHaveProperty("identificador", "Usuario nuevo");
+        expect(userCreated).not.toHaveProperty("contrasenia");
+        expect(userInDB).toHaveProperty("contrasenia");
+    });
 
     afterAll(async () => {
         try {
-
-            await mongoose.disconnect();
+            await mongoose.connection.close();
         } catch (error) {
             console.log("El problema es cerrar");
         }
