@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const fs = require("fs");
 const { promisify } = require("util");
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 
 const fakefs = {
     readAsyn: promisify(fs.readFile),
@@ -11,8 +11,8 @@ const propuestasSchema = new mongoose.Schema({
     dia: { type: Date, required: true },
     puesto: { type: String, required: true },
     lugar: { type: String, required: true },
-    descripcion: { type: String, required: true },
     precio: { type: Number, required: true },
+    descripcion: { type: String, required: false },
 });
 
 propuestasSchema.statics.filtrar = async function (params) {

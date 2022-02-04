@@ -47,7 +47,6 @@ userRouter.post("/", async (req, res) => {
             contrasenia: await bcrypt.hash(body.contrasenia, 10)
         };
         const user = await userModel.create(userToAdd);
-        console.log(user);
         res.status(201).json(user);
     } catch (error) {
         res.status(400).json(error);

@@ -1,10 +1,12 @@
 const express = require("express");
+const propousRouter = require("./router/propouseRouter");
 const app = express();
 //const cookie = require("cookie");
 const userRouter = require("./router/userRouter");
 
 app.use(express.json());
 app.use("/api/users", userRouter);
+app.use("/api/propuestas", propousRouter);
 
 /*const apiRouter = require("./api/apiRouter");
 const publicRouter = require("./public/publicRouter");
