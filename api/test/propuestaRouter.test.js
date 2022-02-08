@@ -18,7 +18,7 @@ describe("Test del router de propuestas", () => {
         descripcion: "Hola que tal",
         precio: 1000
     };
-    const propuestasIniciales = [propuesta, {
+    const propuestasIniciales = [{
         equipo: "Bokita",
         puesto: "Delantero",
         lugar: "Otro estadio",
@@ -41,7 +41,30 @@ describe("Test del router de propuestas", () => {
         expect(response.body).toHaveLength(DBBefore.length);
         expect(response.body).toHaveLength(propuestasIniciales.length);
 
-    });  
+    });
+    
+    test("GET de la ruta /:id devuelve una propuesta en particular", async () => {
+        const {id} = await propuestaModel.findOne({ equipo: "Bokita" });
+        const response = await api.get(baseURL + "/" + id);
+        
+        const usuarioEncontrado = response.body;
+
+        expect(usuarioEncontrado).toHaveProperty("equipo", "Bokita");
+
+    });
+
+    test("POST / deberia crear una nueva propuesta", async()=>{
+        const {body} = await api.post(baseURL).send(propuesta).expect(201);
+
+        const DBAfter = await propuestaModel.find({});
+
+        expect(DBAfter).toHaveLength(propuestasIniciales.length + 1);
+        expect(body).toHaveProperty("id");
+    });
+
+    test.skip("DELETE /:id deberia retornar una propuesta en particular", async()=>{
+
+    });
 
     afterAll(async () => {
         await mongoose.disconnect();

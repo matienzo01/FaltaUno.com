@@ -26,14 +26,6 @@ userSchema.statics.iniciaSesion = async function (body) {
     }
 };
 
-userSchema.statics.registraUsuario = async function (params) {
-    let salt = await bcrypt.genSalt(10);
-    params.contrasenia = await bcrypt.hash(params.contrasenia, salt);
-    await mongoose.connect(process.env.DB_NAME);
-    await userModel.create(params);
-    await mongoose.disconnect();
-};
-
 userSchema.set("toJSON", {
     transform: (document, returnedDocument) => {
         returnedDocument.id = returnedDocument._id;

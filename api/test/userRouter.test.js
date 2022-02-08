@@ -71,8 +71,6 @@ describe("Test exitosos relacionados al router de usuarios", () => {
         const DBAfter = await userModel.find({});
         const userDeleted = await userModel.findOne({identificador: "Matienzo"});
 
-        console.log(userDeleted);
-
         expect(DBAfter).toHaveLength(usersInciales.length - 1);
         expect(userDeleted).toBeNull();
         expect(body).toHaveProperty("identificador", "Matienzo");
