@@ -3,10 +3,12 @@ const propousRouter = require("./router/propouseRouter");
 const app = express();
 //const cookie = require("cookie");
 const userRouter = require("./router/userRouter");
+const mongoose = require("mongoose");
 
 app.use(express.json());
 app.use("/api/users", userRouter);
 app.use("/api/propuestas", propousRouter);
+mongoose.connect(process.env.DB_NAME);
 
 /*const apiRouter = require("./api/apiRouter");
 const publicRouter = require("./public/publicRouter");

@@ -5,14 +5,13 @@ Refactorizacion:
             ☐ Implementacion, a definir si con localStorage o cookie
         
         user: 
-            ☐ Ruta de eliminar un usuario
+            ✔ Ruta de eliminar un usuario @started(22-02-07 22:25) @done(22-02-07 22:42) @lasted(17m16s)
             ☐ Ruta de modificar un usuario
             ☐ Redefinir schema
 
         Propuestas:
-            ✔ Ruta de devolucion de todas las propuestas @started(22-02-03 23:00) @done(22-02-03 23:53) @lasted(45s)
-            ☐ Ruta de devolucion de una nota en particular
-            ☐ Ruta de agregar una propuesta
+            ☐ Ruta de devolucion de una nota en particular @1h30m 
+            ☐ Ruta de agregar una propuesta @started(22-02-07 22:42)
             ☐ Ruta de eliminar una propuesta
             ☐ Ruta de modificar una propuesta
             ☐ Redefinir schema
@@ -25,7 +24,6 @@ Refactorizacion:
         ☐ Rediseño grafico la aplicacion 
         ☐ La propuesta debe mostrar su precio
 
-        
 Implementacion:
     Back:
         ☐ Requerir el login para realizar ciertas funciones
@@ -37,3 +35,8 @@ Implementacion:
 
     ☐ Implemntar test e2e
     ☐ Ver si podria ser posible la implementacion de una foto de la posicion que se quiere q ocupe
+    ☐ Deployment
+
+Archive:
+  ✔ Ruta de devolucion de todas las propuestas @started(22-02-06 23:23) @done(22-02-06 23:24) @lasted(1m9s) @project(Refactorizacion.Back.Propuestas)
+  ✔ Corregir para que solo haya una coneccion a la BD al principio @started(22-02-06 23:12) @done(22-02-06 23:24) @lasted(12m19s) @project(Refactorizacion.Back)

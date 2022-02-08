@@ -1,19 +1,12 @@
 const userRouter = require("express").Router();
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const userModel = require("../models/userModel");
 
 userRouter.get("/all", async (req, res) => {
-    try {
-        await mongoose.connect(process.env.DB_NAME);
-    } catch (error) {
-        res.status(500).send({ error });
-    }
-
+   
     try {
         const users = await userModel.find({});
-        await mongoose.disconnect();
         res.status(200).json(users);
     } catch (error) {
         res.status(400).send({ error });
@@ -23,14 +16,10 @@ userRouter.get("/all", async (req, res) => {
 });
 
 userRouter.get("/:id", (req, res) => {
-    mongoose.connect(process.env.DB_NAME)
-        .then(() => {
-            userModel.findById(req.params.id).then(user => {
-                mongoose.disconnect().then(() => res.status(302).json(user));
-
-            }).catch((err) => res.status(404).send({ error: err.message }));
-        })
-        .catch(err => { res.status(500).send({ error: err.message }); });
+    
+    userModel.findById(req.params.id).then(user => {
+        res.status(302).json(user);
+    }).catch((err) => res.status(404).send({ error: err.message }));
 });
 
 userRouter.get("/my", (req, res) => { //eslint-disable-line
@@ -41,7 +30,6 @@ userRouter.post("/", async (req, res) => {
     const { body } = req;
 
     try {
-        await mongoose.connect(process.env.DB_NAME);
         const userToAdd = {
             identificador: body.identificador,
             contrasenia: await bcrypt.hash(body.contrasenia, 10)
@@ -51,6 +39,12 @@ userRouter.post("/", async (req, res) => {
     } catch (error) {
         res.status(400).json(error);
     }
+});
+
+userRouter.delete("/:id", async(req, res)=>{
+    
+    const deleted = await userModel.findByIdAndDelete(req.params.id);
+    res.status(200).json(deleted);
 });
 
 module.exports = userRouter;

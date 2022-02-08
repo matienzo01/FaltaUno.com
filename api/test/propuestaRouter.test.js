@@ -27,22 +27,16 @@ describe("Test del router de propuestas", () => {
         precio: 800
     }];
 
-    beforeAll(async () => {
-        await mongoose.connect(process.env.DB_NAME);
-        
-    });
-
     beforeEach(async () => {
         await propuestaModel.deleteMany({});
         for(let propuesta of propuestasIniciales)
             await propuestaModel.create(propuesta);
-    });
+    }, 10000);
 
     test("GET de la ruta /all devuelve todas las propuestas", async () => {
         const DBBefore = await propuestaModel.find({});
 
         const response = await api.get(baseURL).expect(200);
-        await mongoose.connect(process.env.DB_NAME);
 
         expect(response.body).toHaveLength(DBBefore.length);
         expect(response.body).toHaveLength(propuestasIniciales.length);
