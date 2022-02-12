@@ -23,4 +23,9 @@ propousRouter.post("/", async (req, res) => {
     res.status(201).json(propousCreated);
 });
 
+propousRouter.delete("/:id", async (req, res) => {
+    await propuestaModel.findByIdAndDelete(req.params.id);
+    res.status(200).json({});
+});
+
 module.exports = propousRouter;

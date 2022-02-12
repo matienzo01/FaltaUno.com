@@ -1,16 +1,12 @@
 Refactorizacion:
     Back: 
 
-        Login:
-            ☐ Implementacion, a definir si con localStorage o cookie
-        
         user: 
-            ☐ Ruta de modificar un usuario
+            ☐ Ruta de modificar un usuario @30m
             ☐ Redefinir schema
 
         Propuestas:
-            ☐ Ruta de eliminar una propuesta
-            ☐ Ruta de modificar una propuesta
+            ☐ Ruta de modificar una propuesta @30m
             ☐ Redefinir schema
         
         ☐ Añadir test de casos limite
@@ -35,8 +31,9 @@ Implementacion:
     ☐ Deployment
 
 Archive:
+  ✔ Ruta de devolucion de una propuesta en particular @30m @done(22-02-11 22:55) @project(Refactorizacion.Back.Propuestas)
+  ✔ Ruta de agregar una propuesta @30m @started(22-02-07 22:42) @done(22-02-11 22:54) @lasted(4d12m30s) @project(Refactorizacion.Back.Propuestas)
+  ✔ Ruta de eliminar una propuesta @30m @done(22-02-11 22:54) @project(Refactorizacion.Back.Propuestas)
   ✔ Ruta de eliminar un usuario @started(22-02-07 22:25) @done(22-02-07 22:42) @lasted(17m16s) @project(Refactorizacion.Back.user)
-  ✔ Ruta de devolucion de una propuesta en particular @1h30m @started(22-02-07 23:06) @done(22-02-07 23:06) @lasted(56s) @project(Refactorizacion.Back.Propuestas)
-  ✔ Ruta de agregar una propuesta @started(22-02-07 22:42) @done(22-02-07 22:56) @lasted(14m27s) @project(Refactorizacion.Back.Propuestas)
   ✔ Ruta de devolucion de todas las propuestas @started(22-02-06 23:23) @done(22-02-06 23:24) @lasted(1m9s) @project(Refactorizacion.Back.Propuestas)
   ✔ Corregir para que solo haya una coneccion a la BD al principio @started(22-02-06 23:12) @done(22-02-06 23:24) @lasted(12m19s) @project(Refactorizacion.Back)

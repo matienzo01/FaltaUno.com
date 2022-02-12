@@ -62,8 +62,14 @@ describe("Test del router de propuestas", () => {
         expect(body).toHaveProperty("id");
     });
 
-    test.skip("DELETE /:id deberia retornar una propuesta en particular", async()=>{
+    test("DELETE /:id deberia eliminar una propuesta en particular", async()=>{
+        const {id} = await propuestaModel.findOne({ equipo: "Bokita" });
+        
+        await api.delete(baseURL + "/" + id).expect(200);
 
+        const DBAfter = await propuestaModel.find({});
+
+        expect(DBAfter).toHaveLength(propuestasIniciales.length - 1);
     });
 
     afterAll(async () => {
