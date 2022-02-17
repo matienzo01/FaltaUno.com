@@ -1,7 +1,7 @@
 import React from "react"
 import "@testing-library/jest-dom/extend-expect"
 import { render, screen } from "@testing-library/react"
-import Propuesta from "../../componentes/propuesta"
+import Propuesta from "../../componentes/components/propuesta"
 
 describe("Test relacionados al componente propuesta", () => {
 	const horario = new Date().toISOString()
