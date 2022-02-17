@@ -9,11 +9,13 @@ Refactorizacion:
             ☐ Ruta de modificar una propuesta @30m
             ☐ Redefinir schema
         
-        ☐ Añadir test de casos limite
+        ☐ Añadir test de casos limite @3h
 
     Front:
-        ☐ Investigar React-Dom-Router
+        ☐ Realizar maquetacion en HTML @2h
+        ☐ Investigar React-Dom-Router @1h
         ☐ Crear componente para cada una de las propuestas
+        ☐ Crear componente landing page @started(22-02-16 23:39)
         ☐ Rediseño grafico la aplicacion 
         ☐ La propuesta debe mostrar su precio
 

@@ -1,11 +1,13 @@
 const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 const propousRouter = require("./router/propouseRouter");
 const app = express();
 //const cookie = require("cookie");
 const userRouter = require("./router/userRouter");
-const mongoose = require("mongoose");
 
 app.use(express.json());
+app.use(cors());
 app.use("/api/users", userRouter);
 app.use("/api/propuestas", propousRouter);
 mongoose.connect(process.env.DB_NAME);

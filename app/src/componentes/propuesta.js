@@ -6,7 +6,7 @@ const Propuesta = ({ equipo, puesto, lugar, horario, descripcion }) => { //{ equ
 		<>
 			<h1>{equipo} - {puesto}</h1>
 			<h3>{lugar} - {horario}</h3>
-			<p>{descripcion}</p>
+			{descripcion ? <p>{descripcion}</p> : ""}
 		</>
 	)
 }
