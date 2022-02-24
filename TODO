@@ -12,27 +12,30 @@ Refactorizacion:
         ☐ Añadir test de casos limite @3h
 
     Front:
-        ☐ Realizar maquetacion en HTML @2h
-        ☐ Investigar React-Dom-Router @1h
-        ☐ Crear componente para cada una de las propuestas
-        ☐ Crear componente landing page @started(22-02-16 23:39)
+        ☐ La autentificacion debe ser a traves de una ventana modal arriba de la pagina que se encuentre en ese momento
         ☐ Rediseño grafico la aplicacion 
-        ☐ La propuesta debe mostrar su precio
-
+        
 Implementacion:
     Back:
         ☐ Requerir el login para realizar ciertas funciones
         ☐ Poder postularse a una propuesta
+                
     Front:
+        ☐ Crear componente para cada una de las propuestas y debe mostrar su precio
+        ☐ Realizar maquetacion en HTML @2h
         ☐ Pagina del detalle de una propuesta con boton para postularse -> podria ser que la descripcion solo se muestre en esta parte junto con la foto y eso
-        ☐ Definir Redux
-        ☐ Resolver el filtro en el back
+        ☐ Resolver el filtro en el back?
+        ☐ Implementar el perfil propio
 
     ☐ Implemntar test e2e
     ☐ Ver si podria ser posible la implementacion de una foto de la posicion que se quiere q ocupe
     ☐ Deployment
 
 Archive:
+  ✔ Investigar React-Dom-Router @1h @done(22-02-17 00:34) @project(Refactorizacion.Front)
+  ✔ Crear componente landing page @started(22-02-16 23:39) @done(22-02-17 00:29) @lasted(50m19s) @project(Refactorizacion.Front)
+  ✔ Definir el filtro @started(22-02-17 00:40) @done(22-02-24 15:04) @lasted(1w14h24m14s) @project(Refactorizacion.Front)
+  ✔ Definir Redux @started(22-02-24 14:04) @done(22-02-24 15:04) @lasted(1h18s) @project(Implementacion.Front)
   ✔ Ruta de devolucion de una propuesta en particular @30m @done(22-02-11 22:55) @project(Refactorizacion.Back.Propuestas)
   ✔ Ruta de agregar una propuesta @30m @started(22-02-07 22:42) @done(22-02-11 22:54) @lasted(4d12m30s) @project(Refactorizacion.Back.Propuestas)
   ✔ Ruta de eliminar una propuesta @30m @done(22-02-11 22:54) @project(Refactorizacion.Back.Propuestas)

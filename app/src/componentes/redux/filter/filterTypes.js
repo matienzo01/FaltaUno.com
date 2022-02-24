@@ -1,0 +1,3 @@
+export const SET_FILTER_VALUE = 'SET_FILTER_VALUE'
+
+export const SET_FILTER_TYPE = 'SET_FILTER_TYPE'
