@@ -3,11 +3,11 @@ Refactorizacion:
 
         user: 
             ☐ Ruta de modificar un usuario @30m
-            ☐ Redefinir schema
+            ☐ Redefinir schema @started(22-02-24 19:51)
 
         Propuestas:
             ☐ Ruta de modificar una propuesta @30m
-            ☐ Redefinir schema
+            ☐ Redefinir schema @started(22-02-24 19:51)
         
         ☐ Añadir test de casos limite @3h
 
@@ -17,14 +17,13 @@ Refactorizacion:
         
 Implementacion:
     Back:
-        ☐ Requerir el login para realizar ciertas funciones
+        ☐ Investigar limitar rutas con login
         ☐ Poder postularse a una propuesta
                 
     Front:
         ☐ Crear componente para cada una de las propuestas y debe mostrar su precio
         ☐ Realizar maquetacion en HTML @2h
         ☐ Pagina del detalle de una propuesta con boton para postularse -> podria ser que la descripcion solo se muestre en esta parte junto con la foto y eso
-        ☐ Resolver el filtro en el back?
         ☐ Implementar el perfil propio
 
     ☐ Implemntar test e2e
@@ -32,6 +31,7 @@ Implementacion:
     ☐ Deployment
 
 Archive:
+  ✔ Requerir el login para realizar posteo de propuesta @started(22-02-24 19:52) @done(22-02-24 21:04) @lasted(1h12m56s) @project(Implementacion.Back)
   ✔ Investigar React-Dom-Router @1h @done(22-02-17 00:34) @project(Refactorizacion.Front)
   ✔ Crear componente landing page @started(22-02-16 23:39) @done(22-02-17 00:29) @lasted(50m19s) @project(Refactorizacion.Front)
   ✔ Definir el filtro @started(22-02-17 00:40) @done(22-02-24 15:04) @lasted(1w14h24m14s) @project(Refactorizacion.Front)

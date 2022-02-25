@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const userModel = require("../models/userModel");
 
 userRouter.get("/all", async (req, res) => {
-   
+
     try {
         const users = await userModel.find({});
         res.status(200).json(users);
@@ -16,7 +16,7 @@ userRouter.get("/all", async (req, res) => {
 });
 
 userRouter.get("/:id", (req, res) => {
-    
+
     userModel.findById(req.params.id).then(user => {
         res.status(302).json(user);
     }).catch((err) => res.status(404).send({ error: err.message }));
@@ -41,8 +41,8 @@ userRouter.post("/", async (req, res) => {
     }
 });
 
-userRouter.delete("/:id", async(req, res)=>{
-    
+userRouter.delete("/:id", async (req, res) => {
+
     const deleted = await userModel.findByIdAndDelete(req.params.id);
     res.status(200).json(deleted);
 });

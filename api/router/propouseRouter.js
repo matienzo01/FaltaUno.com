@@ -1,4 +1,5 @@
 const propousRouter = require("express").Router();
+const authMiddleware = require("../middleware/authMiddleware");
 const propuestaModel = require("../models/propuestaModel");
 
 propousRouter.get("/", async (req, res) => {
@@ -8,7 +9,7 @@ propousRouter.get("/", async (req, res) => {
     } catch (error) {
         res.status(404).json(error);
     }
-    
+
 });
 
 propousRouter.get("/:id", async (req, res) => {
@@ -16,8 +17,8 @@ propousRouter.get("/:id", async (req, res) => {
     res.status(200).json(propuestas);
 });
 
-propousRouter.post("/", async (req, res) => {
-    const {body} = req;
+propousRouter.post("/", authMiddleware, async (req, res) => {
+    const { body } = req;
 
     const propousCreated = await propuestaModel.create(body);
     res.status(201).json(propousCreated);
