@@ -2,7 +2,7 @@ const propousRouter = require("express").Router();
 const authMiddleware = require("../middleware/authMiddleware");
 const propuestaModel = require("../models/propuestaModel");
 
-propousRouter.get("/", async (req, res) => {
+propousRouter.get("/", authMiddleware, async (req, res) => {
     try {
         const propuestas = await propuestaModel.find({});
         res.status(200).json(propuestas);
@@ -24,7 +24,7 @@ propousRouter.post("/", authMiddleware, async (req, res) => {
     res.status(201).json(propousCreated);
 });
 
-propousRouter.delete("/:id", async (req, res) => {
+propousRouter.delete("/:id", authMiddleware, async (req, res) => {
     await propuestaModel.findByIdAndDelete(req.params.id);
     res.status(200).json({});
 });

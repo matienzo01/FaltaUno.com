@@ -6,6 +6,13 @@ import AuthPage from "./componentes/pages/authPage";
 import LandingPage from './componentes/pages/landingPage';
 import Footer from './componentes/components/Footer';
 import store from "./componentes/redux/store";
+import axios from 'axios';
+
+axios.interceptors.request.use((req) => {
+    const token = localStorage.getItem("token");
+    req.headers.Authorization = `Bearer ${token}`;
+    return req
+})
 
 ReactDOM.render(
     <Provider store={store}>
