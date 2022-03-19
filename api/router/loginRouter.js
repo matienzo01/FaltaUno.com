@@ -11,7 +11,7 @@ loginRouter.post("/", async (req, res) => {
     else {
         const id = user._id;
         const token = await jwt.sign({ id }, process.env.SECRET);
-        res.status(200).cookie("token", token, { httpOnly: true }).send();
+        res.status(200).send({ token });
     }
 });
 

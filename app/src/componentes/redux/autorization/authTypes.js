@@ -1,2 +1,4 @@
 export const SET_LOGIN_INPUT = 'SET_LOGIN_INPUT'
 export const SET_REGISTER_INPUT = 'SET_REGISTER_INPUT'
+export const SET_USERNAME = 'SET_USERNAME'
+export const SET_TOKEN = 'SET_TOKEN'
