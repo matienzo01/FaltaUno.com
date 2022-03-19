@@ -4,6 +4,7 @@ Refactorizacion:
         user: 
             ☐ Ruta de modificar un usuario @30m
             ☐ Redefinir schema @started(22-02-24 19:51)
+            ☐ Hacer login con localstorage
 
         Propuestas:
             ☐ Ruta de modificar una propuesta @30m
@@ -14,10 +15,11 @@ Refactorizacion:
     Front:
         ☐ La autentificacion debe ser a traves de una ventana modal arriba de la pagina que se encuentre en ese momento
         ☐ Rediseño grafico la aplicacion 
+        ☐ Añadir ventana para agregar propuesta
         
 Implementacion:
     Back:
-        ☐ Investigar limitar rutas con login
+        ☐ Investigar limitar rutas con login @started(22-03-19 00:31)
         ☐ Poder postularse a una propuesta
                 
     Front:
