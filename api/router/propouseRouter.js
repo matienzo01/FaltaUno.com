@@ -2,7 +2,7 @@ const propousRouter = require("express").Router();
 const authMiddleware = require("../middleware/authMiddleware");
 const propuestaModel = require("../models/propuestaModel");
 
-propousRouter.get("/", authMiddleware, async (req, res) => {
+propousRouter.get("/", async (req, res) => {
     try {
         const propuestas = await propuestaModel.find({});
         res.status(200).json(propuestas);

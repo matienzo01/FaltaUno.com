@@ -49,7 +49,7 @@ const LandingPage = () => {
     return (
         <div>
             <Filter onclick={handleFilter} onChangeValue={handleChangeValue} onChangeRadio={handleChangeField} />
-            {filterPropuestas.map(propuesta => <Propuesta key={propuesta.id} equipo={propuesta.equipo} puesto={propuesta.puesto} lugar={propuesta.lugar} horario={propuesta.dia} />)}
+            {filterPropuestas.map(propuesta => <Propuesta key={propuesta.id} equipo={propuesta.equipo} puesto={propuesta.puesto} lugar={propuesta.lugar} horario={propuesta.dia} id={propuesta.id} />)}
         </div>
     )
 }

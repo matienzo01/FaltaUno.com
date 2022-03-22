@@ -37,7 +37,9 @@ export default function LoginForm() {
             <input type='text' placeholder='ej: user1234' onChange={changeUsername} />
             <div>Contraseña</div>
             <input type='password' onChange={changePassword} />
-            <button onClick={handleLogin} >Login</button>
+            <div>
+                <button onClick={handleLogin} >Login</button>
+            </div>
         </form>
     )
 }

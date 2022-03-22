@@ -1,34 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Navigate } from 'react-router-dom';
 import LoginForm from '../components/loginForm';
 import RegisterForm from '../components/registerForm';
-import { setLoginInput, setRegisterInput } from '../redux/autorization/authActions';
 
 export default function AuthPage() {
 
-    const authStatus = useSelector(state => state.auth);
-    const dispatch = useDispatch()
-    console.log(authStatus);
+    const auth = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+    const [authStatus, setAuthStatus] = useState("login");
 
-    const toggleLogin = () => {
-        dispatch(setLoginInput())
-    }
-
-    const toggleRegister = () => {
-        dispatch(setRegisterInput())
-    }
-
-    const handleLogin = (event) => {
-        event.preventDefault();
-
+    const changeAuthStatus = () => {
+        setAuthStatus(authStatus === "login" ? "register" : "login")
     }
 
     return (
         <div>
-            {authStatus.input === "login" ? <LoginForm /> : <RegisterForm />}
-
-            <button onClick={authStatus.token === undefined ? toggleRegister : toggleLogin} >Cambiar tipo</button>
+            {localStorage.getItem("token") !== null ? <Navigate to={"/"} /> : ""}
+            {authStatus === "login" ?
+                <>
+                    <LoginForm />
+                    <div>
+                        <span onClick={changeAuthStatus}>No tenes una cuenta?? Registrate</span>
+                    </div>
+                </>
+                :
+                <>
+                    <RegisterForm />
+                    <div>
+                        <span onClick={changeAuthStatus}>Ya tenes una cuenta?? Unite</span>
+                    </div>
+                </>
+            }
         </div>
 
     )
 }
+
+/*
+
+*/

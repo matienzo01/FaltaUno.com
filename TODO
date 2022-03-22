@@ -3,36 +3,35 @@ Refactorizacion:
 
         user: 
             ☐ Ruta de modificar un usuario @30m
-            ☐ Redefinir schema @started(22-02-24 19:51)
-            ☐ Hacer login con localstorage
+            ☐ Redefinir schema
 
         Propuestas:
             ☐ Ruta de modificar una propuesta @30m
-            ☐ Redefinir schema @started(22-02-24 19:51)
+            ☐ Redefinir schema
         
         ☐ Añadir test de casos limite @3h
 
     Front:
-        ☐ La autentificacion debe ser a traves de una ventana modal arriba de la pagina que se encuentre en ese momento
         ☐ Rediseño grafico la aplicacion 
         ☐ Añadir ventana para agregar propuesta
         
-Implementacion:
-    Back:
-        ☐ Investigar limitar rutas con login @started(22-03-19 00:31)
-        ☐ Poder postularse a una propuesta
+    Implementacion:
+        Back:
+            ☐ Poder postularse a una propuesta
                 
-    Front:
-        ☐ Crear componente para cada una de las propuestas y debe mostrar su precio
-        ☐ Realizar maquetacion en HTML @2h
-        ☐ Pagina del detalle de una propuesta con boton para postularse -> podria ser que la descripcion solo se muestre en esta parte junto con la foto y eso
-        ☐ Implementar el perfil propio
+        Front:
+            ☐ Crear componente para cada una de las propuestas y debe mostrar su precio
+            ☐ Realizar maquetacion en HTML @2h
+            ☐ Pagina del detalle de una propuesta con boton para postularse -> podria ser que la descripcion solo se muestre en esta parte junto con la foto y eso
+            ☐ Implementar el perfil propio
+            ☐ La autentificacion debe ser a traves de una ventana modal arriba de la pagina que se encuentre en ese momento
 
     ☐ Implemntar test e2e
-    ☐ Ver si podria ser posible la implementacion de una foto de la posicion que se quiere q ocupe
     ☐ Deployment
 
 Archive:
+  ✔ Hacer login con localstorage @done(22-03-19 19:47) @project(Refactorizacion.Back.user)
+  ✔ Investigar limitar rutas con login @started(22-03-19 00:31) @done(22-03-19 19:47) @lasted(19h16m38s) @project(Implementacion.Back)
   ✔ Requerir el login para realizar posteo de propuesta @started(22-02-24 19:52) @done(22-02-24 21:04) @lasted(1h12m56s) @project(Implementacion.Back)
   ✔ Investigar React-Dom-Router @1h @done(22-02-17 00:34) @project(Refactorizacion.Front)
   ✔ Crear componente landing page @started(22-02-16 23:39) @done(22-02-17 00:29) @lasted(50m19s) @project(Refactorizacion.Front)
