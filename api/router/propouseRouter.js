@@ -13,7 +13,8 @@ propousRouter.get("/", async (req, res) => {
 });
 
 propousRouter.get("/:id", async (req, res) => {
-    const propuestas = await propuestaModel.findById(req.params.id);
+    //console.log(req.params.id);
+    const propuestas = await propuestaModel.findById(req.params.id); //TODO agregar posibilidad de fallo
     res.status(200).json(propuestas);
 });
 

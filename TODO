@@ -20,7 +20,6 @@ Refactorizacion:
             ☐ Poder postularse a una propuesta
                 
         Front:
-            ☐ Crear componente para cada una de las propuestas y debe mostrar su precio
             ☐ Realizar maquetacion en HTML @2h
             ☐ Pagina del detalle de una propuesta con boton para postularse -> podria ser que la descripcion solo se muestre en esta parte junto con la foto y eso
             ☐ Implementar el perfil propio
@@ -30,6 +29,7 @@ Refactorizacion:
     ☐ Deployment
 
 Archive:
+  ✔ Crear componente para cada una de las propuestas y debe mostrar su precio @started(22-03-22 18:47) @done(22-03-23 00:07) @lasted(5h20m40s) @project(Refactorizacion.Implementacion.Front)
   ✔ Hacer login con localstorage @done(22-03-19 19:47) @project(Refactorizacion.Back.user)
   ✔ Investigar limitar rutas con login @started(22-03-19 00:31) @done(22-03-19 19:47) @lasted(19h16m38s) @project(Implementacion.Back)
   ✔ Requerir el login para realizar posteo de propuesta @started(22-02-24 19:52) @done(22-02-24 21:04) @lasted(1h12m56s) @project(Implementacion.Back)

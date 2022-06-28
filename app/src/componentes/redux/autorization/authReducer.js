@@ -1,4 +1,4 @@
-import { SET_LOGIN_INPUT, SET_REGISTER_INPUT, SET_USERNAME } from "./authTypes"
+import { SET_USERNAME } from "./authTypes"
 
 const initialState = {
     username: "",

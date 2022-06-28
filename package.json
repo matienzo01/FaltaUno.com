@@ -1,29 +1,29 @@
 {
-	"name": "faltauno.com",
-	"version": "1.0.0",
-	"description": "reservaFutbol",
-	"scripts": {
-		"dev:api": "npm run dev --workspace api",
-		"dev:app": "npm run start --workspace app",
-		"test:app": "npm run test --workspace app"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/matienzo01/reservaFutbol.git"
-	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/matienzo01/reservaFutbol/issues"
-	},
-	"homepage": "https://github.com/matienzo01/reservaFutbol#readme",
-	"devDependencies": {
-		"@types/jest": "^27.4.0",
-		"eslint": "^8.8.0",
-		"jest": "^27.4.7"
-	},
-	"workspaces": [
-		"api",
-		"app"
-	]
+    "name": "faltauno.com",
+    "version": "1.0.0",
+    "description": "reservaFutbol",
+    "scripts": {
+        "dev:api": "npm run dev --workspace api",
+        "dev:app": "npm run start --workspace app",
+        "test:app": "npm run test --workspace app"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/matienzo01/reservaFutbol.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/matienzo01/reservaFutbol/issues"
+    },
+    "homepage": "https://github.com/matienzo01/reservaFutbol#readme",
+    "devDependencies": {
+        "@types/jest": "^27.4.0",
+        "eslint": "^8.8.0",
+        "jest": "^27.4.7"
+    },
+    "workspaces": [
+        "api",
+        "app"
+    ]
 }
